@@ -12,3 +12,4 @@ rm -f *.deb
 
 read -n1 -p "Press any key to reboot now..."
 echo "$password" | sudo -S reboot
+

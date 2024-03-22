@@ -1,6 +1,6 @@
 # PXIシステムをLinuxで運用する
 
-## Hello👋 > 💻:===:💻 < Hi👋
+### Hello👋 > 💻:===:💻 < Hi👋
 
 ---
 
@@ -49,8 +49,7 @@ PXIシステムの計測器全般を指す。用途に応じて使い分ける�
 - OS:
   - Ubuntu Server 22.04 LTS
 - NI Driver
-  - [README(LTSはまだ出てない)](https://www.ni.com/pdf/manuals/ni-linux-device-drivers-2023-q3.html)
-  - [インストール方法](https://www.ni.com/docs/ja-JP/bundle/ni-platform-on-linux-desktop/page/installing-ni-products-ubuntu.html)
+  - [README(LTSはまだ出てない)][NI Linux Device Drivers 2023 Q3 Readme]
 
 ---
 
@@ -81,11 +80,21 @@ PXIシステムの計測器全般を指す。用途に応じて使い分ける�
 - `sudo apt -y install filename`で使用するNIドライバをインストール
 - `reboot`で再起動
 
+参考リンク
+
+- [NI 製品をインストールする (Ubuntu)]
+- [Linuxディストリビューションでサポートされているドライバパッケージ]
+
 ---
 
 ## Ubuntuのネットワーク設定
 
+システムの概要図は[Fig 1]みたいな感じ。
 基本的にはUbuntu Serverを構築する時と変わらない。サクサク進めよう！
+
+![fig1](network.svg "Local Network")
+
+[Fig 1]: network.svg
 
 ### まずはじめにnetplanあり
 
@@ -122,8 +131,7 @@ PXIシステムの計測器全般を指す。用途に応じて使い分ける�
   ```
 
 - 編集内容を保存したら`sudo netplan apply`を実行して変更を適用する
-
-### OpenSSHでリモート接続できるようにしちゃおう
+- 
 
 PXIに対して別のパソコンからSSHを用いてリモート接続できるようにします。
 まあ、ローカルで使うならあまり必要ない機能なのでここは飛ばしていいです。
@@ -132,14 +140,28 @@ PXIに対して別のパソコンからSSHを用いてリモート接続でき�
 
 ---
 
-## デーモンを使った同期/非同期式による処理
+## デーモンを使った同期~~非同期~~式による処理
 
 ### systemdにNIデバイスを用いたpythonコードの実行を自動化させる
 
 1. bashとpythonを使用した実行
 2. 2台のサーバ（GPUサーバとPXIシステム）を一本の線（LAN、SFT）で接続
-3. systemdにデーモンを登録 - [参考リンク](https://qiita.com/DQNEO/items/0b5d0bc5d3cf407cb7ff)
+3. systemdにデーモンを登録 - [参考リンク][Systemdを使ってさくっと自作コマンドをサービス化してみる]
 
 ---
 
 ## ansibleで自動セットアップまでできたらいいな
+
+---
+
+## 参考文献
+
+1. [NI Linux Device Drivers 2023 Q3 Readme]
+2. [NI 製品をインストールする (Ubuntu)]
+3. [Linuxディストリビューションでサポートされているドライバパッケージ]
+4. [Systemdを使ってさくっと自作コマンドをサービス化してみる]
+
+[NI Linux Device Drivers 2023 Q3 Readme]: https://www.ni.com/pdf/manuals/ni-linux-device-drivers-2023-q3.html
+[NI 製品をインストールする (Ubuntu)]: https://www.ni.com/docs/ja-JP/bundle/ni-platform-on-linux-desktop/page/installing-ni-products-ubuntu.html
+[Linuxディストリビューションでサポートされているドライバパッケージ]: https://www.ni.com/docs/ja-JP/bundle/ni-platform-on-linux-desktop/page/supported-drivers-for-linux-distributions.html
+[Systemdを使ってさくっと自作コマンドをサービス化してみる]: https://qiita.com/DQNEO/items/0b5d0bc5d3cf407cb7ff
