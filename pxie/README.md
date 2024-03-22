@@ -1,5 +1,7 @@
 # PXIシステムをLinuxで運用する
 
+## Hello👋 > 💻:===:💻 < Hi👋
+
 ---
 
 ## はじめに
@@ -8,7 +10,7 @@
 
 > PXIはテストエンジニア用コンピュータです。これは、マルチスロットシャーシにコントローラと計測器を組み合わせたテストおよび計測用プラットフォームです。エンジニアはNI PXIを使用して、検証と製造テストのための高性能な複合測定システムを構築します。
 
-つまり、OSを搭載した万能計測器。やばすぎ。
+つまり、OSを搭載した万能計測器。やばすぎ🤯
 
 ### 主な構成パーツ
 
@@ -32,17 +34,18 @@ PXIシステムの計測器全般を指す。用途に応じて使い分ける�
 
 ---
 
-## PXIシステム　概要
+## PXIシステムの概要
 
-以降はPXIコントローラのことを単にPXIと表記します。（PXIにUbuntu 22.04をインストール）
+以降はPXIコントローラのことを単にPXIと表記します。（例: PXIにUbuntu 22.04をインストール）
 
 - シャーシ:
-  - PXIe 1092
+  - PXIe-1092
 - コントローラ:
-  - PXIe 8862
+  - PXIe-8862
 - モジュール:
-  - hoge
-  - hoge
+  - PXIe-4481
+  - PXIe-5163
+  - PXIe-6739
 - OS:
   - Ubuntu Server 22.04 LTS
 - NI Driver
@@ -80,7 +83,7 @@ PXIシステムの計測器全般を指す。用途に応じて使い分ける�
 
 ---
 
-##  Ubuntuのネットワーク設定
+## Ubuntuのネットワーク設定
 
 基本的にはUbuntu Serverを構築する時と変わらない。サクサク進めよう！
 
@@ -88,28 +91,34 @@ PXIシステムの計測器全般を指す。用途に応じて使い分ける�
 
 - 基本はここから、PXIのIPアドレスをDHCPから固定に変更する
 - 必要なツールのインストール
+  最小インストールはvimやnanoなどのテキストエディタすら入っていないのだ！
 
   ```bash
   sudo apt -y install inetutils-ping &&\
-  sudo apt -y install openssh-server
+  sudo apt -y install netcat &&\
+  sudo apt -y install tcpdump &&\
+  sudo apt -y install ufw &&\
+  sudo apt -y install nano # vim
   ```
 
-- `sudo vi /etc/netplan/00-`でUbuntuのネットワーク設定を行う（viのところはnanoでも可）
-- 以下の設定を行う
+- `sudo nano /etc/netplan/00-installer-config.yaml`でUbuntuのネットワーク設定を行う（viでも可）
+- 以下の設定を行う（$X, Y \in \mathbb{N} \ | \ 1 < X < 256, 1 < Y < 256$）
   
   ```yaml
   network:
-  version: 2
   ethernets:
-    eth0:
+    eno0:
+      dhcp4: true
+      dhcp6: false
+    eno1:
       dhcp4: false
       dhcp6: false
-      addresses: [192.168.1.X/24]
-      routes:
-        - to: default
-          via: 192.168.1.1
+      addresses:
+      - 192.168.X.Y/24
       nameservers:
-        addresses: [192.168.1.1, 8.8.8.8]
+        addresses: []
+        search: []
+  version: 2
   ```
 
 - 編集内容を保存したら`sudo netplan apply`を実行して変更を適用する
