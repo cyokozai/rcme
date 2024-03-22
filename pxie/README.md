@@ -89,8 +89,10 @@ PXIシステムの計測器全般を指す。用途に応じて使い分ける�
 
 ## Ubuntuのネットワーク設定
 
-システムの概要図は[Fig 1]みたいな感じ。
-基本的にはUbuntu Serverを構築する時と変わらない。サクサク進めよう！
+システムの概要図は[Fig 1]みたいな感じ。クライアントとなるデスクトップPC（左）とここまで設定を行ってきたPXI（右）とが、直接LANケーブルによって接続されています。
+これだけで立派なネットワークを確立することができるのだから、やはりコンピュータは素晴らしい！
+
+ここからの作業は一般的なUbuntu Serverを構築する時と変わらない[^1]のでサクサク進めよう！
 
 ![fig1](network.svg "Local Network")
 
@@ -131,12 +133,24 @@ PXIシステムの計測器全般を指す。用途に応じて使い分ける�
   ```
 
 - 編集内容を保存したら`sudo netplan apply`を実行して変更を適用する
-- 
+- `ip a`を実行して設定が適応されているか確認する
 
-PXIに対して別のパソコンからSSHを用いてリモート接続できるようにします。
-まあ、ローカルで使うならあまり必要ない機能なのでここは飛ばしていいです。
+  ```bash
+  $ ip a
+  ```
 
-### ncとtcpdampでいい感じにやりとりできないかな
+### Firewallを設定する
+
+- `sudo apt-get update` `sudo apt -y install ufw`を実行する
+- `sudo ufw enable`でファイアウォールを起動する
+- `sudo ufw default deny`を実行して全てのポートを無効にする
+- `sudo ufw allow <port num>`で任意のポート番号を許可する
+- `sudo ufw status numbered`を実行すると現在のファイアウォールの設定を確認することができる
+
+### VSCodeからSSHでリモート接続できるようにしよう
+
+PXIに対して別のパソコンからSSHを用いてリモート接続できるようにします。こうすることで、VSCodeを使った編集が可能となります。やったね👍
+まあ、ローカルで使うのであまり必要ないかも。忙しい人はここは飛ばしてもいいです。
 
 ---
 
@@ -165,3 +179,5 @@ PXIに対して別のパソコンからSSHを用いてリモート接続でき�
 [NI 製品をインストールする (Ubuntu)]: https://www.ni.com/docs/ja-JP/bundle/ni-platform-on-linux-desktop/page/installing-ni-products-ubuntu.html
 [Linuxディストリビューションでサポートされているドライバパッケージ]: https://www.ni.com/docs/ja-JP/bundle/ni-platform-on-linux-desktop/page/supported-drivers-for-linux-distributions.html
 [Systemdを使ってさくっと自作コマンドをサービス化してみる]: https://qiita.com/DQNEO/items/0b5d0bc5d3cf407cb7ff
+
+[^1]: 今回のネットワークにはルータやDNSサーバが存在しません。それゆえnetplanの設定で不要な部分は排除していることに注意してください。
