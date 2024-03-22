@@ -34,6 +34,8 @@ PXIシステムの計測器全般を指す。用途に応じて使い分ける�
 
 ## PXIシステム　概要
 
+以降はPXIコントローラのことを単にPXIと表記します。（PXIにUbuntu 22.04をインストール）
+
 - シャーシ:
   - PXIe 1092
 - コントローラ:
@@ -42,14 +44,14 @@ PXIシステムの計測器全般を指す。用途に応じて使い分ける�
   - hoge
   - hoge
 - OS:
-  - Ubuntu 22.04 LTS
+  - Ubuntu Server 22.04 LTS
 - NI Driver
   - [README(LTSはまだ出てない)](https://www.ni.com/pdf/manuals/ni-linux-device-drivers-2023-q3.html)
   - [インストール方法](https://www.ni.com/docs/ja-JP/bundle/ni-platform-on-linux-desktop/page/installing-ni-products-ubuntu.html)
 
 ---
 
-## Ubuntuをインストール
+## PXIにUbuntuをインストール
 
 - Ubuntu Desktop/Serverのイメージをダウンロード
   [公式](https://jp.ubuntu.com/download)からLTS版をインストール
@@ -67,6 +69,8 @@ PXIシステムの計測器全般を指す。用途に応じて使い分ける�
 
 ## NI DriverをUbuntuにセットアップ
 
+別に手動でやるような作業じゃないから...気が向いたらshell書いておきます。
+
 - `sudo apt -y update`, `sudo apt dist-upgrade`を実行して最新版のカーネルにアップデート
 - `reboot`で再起動
 - `sudo apt install ./filename.deb`を実行してリポジトリ登録パッケージをインストール
@@ -76,9 +80,9 @@ PXIシステムの計測器全般を指す。用途に応じて使い分ける�
 
 ---
 
-## PXIをSSHサーバにする
+##  Ubuntuのネットワーク設定
 
-基本的にはUbuntu Serverを構築する時と変わらない。サクサク進めよう
+基本的にはUbuntu Serverを構築する時と変わらない。サクサク進めよう！
 
 ### まずはじめにnetplanあり
 
@@ -107,6 +111,15 @@ PXIシステムの計測器全般を指す。用途に応じて使い分ける�
       nameservers:
         addresses: [192.168.1.1, 8.8.8.8]
   ```
+
+- 編集内容を保存したら`sudo netplan apply`を実行して変更を適用する
+
+### OpenSSHでリモート接続できるようにしちゃおう
+
+PXIに対して別のパソコンからSSHを用いてリモート接続できるようにします。
+まあ、ローカルで使うならあまり必要ない機能なのでここは飛ばしていいです。
+
+### ncとtcpdampでいい感じにやりとりできないかな
 
 ---
 
