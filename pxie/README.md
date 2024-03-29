@@ -75,19 +75,25 @@ PXIシステムの計測器全般を指す。用途に応じて使い分ける�
 
 - `sudo apt -y update`, `sudo apt dist-upgrade`を実行して最新版のカーネルにアップデート
 - `reboot`で再起動
-- `sudo apt install ./filename.deb`を実行してリポジトリ登録パッケージをインストール
+- `curl -O https://download.ni.com/support/softlib/MasterRepository/LinuxDrivers2024Q1/NILinux2024Q1DeviceDrivers.zip`を実行してLinuxデバイスドライバリポジトリ登録パッケージをダウンロード
+- `unzip NILinux2024Q1DeviceDrivers.zip`を実行して解凍
+- `sudo apt install /home/researcher/NILinux2024Q1DeviceDrivers/ni-ubuntu2204-drivers-2024Q1.deb`を実行してリポジトリ登録パッケージをインストール
   ※ filename.debは任意のパッケージを使用
+  ※ なぜか絶対パスじゃないと動かなかった、なんで？
 - `sudo apt -y install filename`で使用するNIドライバをインストール
 - `reboot`で再起動
 
-今回の構成で必要なドライバは以下の通りです。
+今回の構成のドライバと必要なパッケージは以下の通りです。
 
-- NI-DAQmx 15.1
-- NI-SCOPE LTS
+| Driver   | Package                  |
+|----------|--------------------------|
+| NI-DAQmx | ni-daqmx                 |
+| NI-SCOPE | ni-scope, ni-scope-daqmx |
 
 参考リンク
 
 - [NI 製品をインストールする (Ubuntu)]
+- [LinuxデスクトップにNI のドライバとソフトウェアをインストールする]
 - [Linuxディストリビューションでサポートされているドライバパッケージ]
 
 ---
@@ -109,40 +115,56 @@ PXIシステムの計測器全般を指す。用途に応じて使い分ける�
 - 必要なツールのインストール
   最小インストールはvimやnanoなどのテキストエディタすら入っていないのだ！
 
-  ```bash
-  sudo apt -y install inetutils-ping &&\
-  sudo apt -y install netcat &&\
-  sudo apt -y install tcpdump &&\
-  sudo apt -y install ufw &&\
-  sudo apt -y install nano # vim
-  ```
+```bash
+sudo apt -y install inetutils-ping &&\
+sudo apt -y install netcat &&\
+sudo apt -y install tcpdump &&\
+sudo apt -y install ufw &&\
+sudo apt -y install openssh-server &&\
+sudo apt -y install nano # vim
+```
 
 - `sudo nano /etc/netplan/00-installer-config.yaml`でUbuntuのネットワーク設定を行う（viでも可）
 - 以下の設定を行う（$X, Y \in \mathbb{N} \ | \ 1 < X < 256, 1 < Y < 256$）
   
-  ```yaml
-  network:
-  ethernets:
-    eno0:
-      dhcp4: true
-      dhcp6: false
-    eno1:
-      dhcp4: false
-      dhcp6: false
-      addresses:
-      - 192.168.X.Y/24
-      nameservers:
-        addresses: []
-        search: []
-  version: 2
-  ```
+```yaml
+network:
+ethernets:
+  eno0:
+    dhcp4: true
+    dhcp6: false
+  eno1:
+    dhcp4: false
+    dhcp6: false
+    addresses:
+    - 192.168.X.Y/24
+    nameservers:
+      addresses: []
+      search: []
+version: 2
+```
 
 - 編集内容を保存したら`sudo netplan apply`を実行して変更を適用する
 - `ip a`を実行して設定が適応されているか確認する
 
-  ```bash
-  $ ip a
-  ```
+```bash
+$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+      valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+      valid_lft forever preferred_lft forever
+2: eno1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 00:80:2f:38:b4:68 brd ff:ff:ff:ff:ff:ff
+    altname enp112s0
+    inet 192.168.200.200/24 brd 192.168.200.255 scope global eno1
+      valid_lft forever preferred_lft forever
+    inet6 fe80::280:2fff:fe38:b468/64 scope link 
+      valid_lft forever preferred_lft forever
+```
+
+うむうむ、良きかな👍
 
 ### Firewallを設定する
 
@@ -159,12 +181,11 @@ PXIに対して別のパソコンからSSHを用いてリモート接続でき�
 
 - PXIに接続したいパソコン（あなたが普段使っているWindowaやMac）に[VSCodeをインストール](https://code.visualstudio.com/download)します
   ※インストール済みの人はスルーで
-
 - VSCodeの拡張機能で"remote"と検索すると、一番上に”[Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)”という拡張機能のパッケージが出てくるので、これをインストール
 - リモートエクスプローラーというバッジが増えているので、クリックしてメニューを開き、SSHと書かれたトグルリストの歯車マークをクリックしてSSH構成ファイルを開く
 - `SSH config` ファイルが開くので、必要なホスト情報を記述する。初回はパスワードログインなので公開鍵の設定は必要なし
   
-```bash: "config"
+```bash:config
 Host PXISystem
     HostName <PXI IPv4 address>
     User <接続先のUsername>
@@ -174,7 +195,7 @@ Host PXISystem
 - PXIシステムのネットワーク（192.168.200.0）に接続
   方法は有線無線なんでも良い
 
-```text: "Network"
+```text:Network
 192.168.200.0
 ├── PXISystem: 192.168.200.200
 ├── Desktop PC: 192.168.200.201
@@ -182,6 +203,7 @@ Host PXISystem
 ```
 
 - リモートエクスプローラーを更新すると、ホスト名が表示されたトグルリストが出現するので、接続をクリックします
+  ※ここでうまくいかない人は[付録](#openssh-serverの設定)の方法を試してください
 - 初回は接続先ホストのOSを聞かれるので、 Linuxを選択
 - パスワードを求められたら。接続先のパスワードを入力
 
@@ -203,15 +225,38 @@ Host PXISystem
 
 ---
 
+## おまけ
+
+全部書くと長すぎるかなと思って細かい話はこっちに補足しておきます。
+
+### OpenSSH Serverの設定
+
+[Firewallを設定する](#firewallを設定する)で開放するポート番号を指定した場合、SSHの設定を変更する必要があります。SSHされる側、つまりPXISystemにはsshdというデーモンが動いています。この子が見張っているポート番号はデフォルトで22番です。しかし、あなたはつい先程Firewallを稼働させて自分で指定したポート番号以外を塞いでしまいました。なので、sshdのコンフィグファイルを変更する必要があります。ついでに設定を変更してセキュリティ対策もしておきましょう。
+
+- `sudo nano /etc/ssh/sshd_config` を実行し、編集画面に移ります
+- 次の項目を変更しておきましょう。
+
+```config:sshd_config
+Port <Firewallで開放したポート番号>
+PermitRootLogin no
+PermitEmptyPasswords no
+```
+
+- 完了したら保存して、`sudo systemctl restart sshd`を実行してsshdを再起動させて設定を反映させる
+
+---
+
 ## 参考文献
 
 1. [NI Linux Device Drivers 2023 Q3 Readme]
 2. [NI 製品をインストールする (Ubuntu)]
-3. [Linuxディストリビューションでサポートされているドライバパッケージ]
-4. [Systemdを使ってさくっと自作コマンドをサービス化してみる]
+3. [LinuxデスクトップにNI のドライバとソフトウェアをインストールする]
+4. [Linuxディストリビューションでサポートされているドライバパッケージ]
+5. [Systemdを使ってさくっと自作コマンドをサービス化してみる]
 
 [NI Linux Device Drivers 2023 Q3 Readme]: https://www.ni.com/pdf/manuals/ni-linux-device-drivers-2023-q3.html
 [NI 製品をインストールする (Ubuntu)]: https://www.ni.com/docs/ja-JP/bundle/ni-platform-on-linux-desktop/page/installing-ni-products-ubuntu.html
+[LinuxデスクトップにNI のドライバとソフトウェアをインストールする]: https://www.ni.com/docs/ja-JP/bundle/ni-platform-on-linux-desktop/page/installing-ni-drivers-and-software-on-linux-desktop.html
 [Linuxディストリビューションでサポートされているドライバパッケージ]: https://www.ni.com/docs/ja-JP/bundle/ni-platform-on-linux-desktop/page/supported-drivers-for-linux-distributions.html
 [Systemdを使ってさくっと自作コマンドをサービス化してみる]: https://qiita.com/DQNEO/items/0b5d0bc5d3cf407cb7ff
 
