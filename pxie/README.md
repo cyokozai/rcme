@@ -248,7 +248,6 @@ PermitEmptyPasswords no
 ### Dockerを使用したコンテナ間通信
 
 ここでは、Dockerでコンテナを２つデプロイしてサーバ間通信の検証環境を構築します。  
-先に断っておきますが、Dockerのネットワークは独特なクセがあるので私はあまりオススメしません。
 チャレンジしてみたい人は実際にコンテナを作成して通信が行われるか検証してみましょう💪
 
 - `docker network create <Docker Network Name>`を実行して任意のDockerネットワークを作成
