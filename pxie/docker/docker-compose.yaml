@@ -1,0 +1,28 @@
+services:
+  test0:
+    container_name: desktop
+    hostname: desktop
+    image: tcp:latest
+    tty: true
+    build: .
+    working_dir: /root
+    volumes:
+      - ./workdir_0:/root/results
+    networks:
+      - tcp_connection
+
+  test1:
+    container_name: pxi
+    hostname: pxi
+    image: tcp:latest
+    tty: true
+    build: .
+    working_dir: /root
+    volumes:
+      - ./workdir_1:/root/results
+    networks:
+      - tcp_connection
+
+networks:
+  tcp_connection:
+    driver: bridge

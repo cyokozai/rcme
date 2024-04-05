@@ -76,6 +76,7 @@ PXIシステムの計測器全般を指す。用途に応じて使い分ける�
 - `sudo apt -y update`, `sudo apt dist-upgrade`を実行して最新版のカーネルにアップデート
 - `reboot`で再起動
 - `curl -O https://download.ni.com/support/softlib/MasterRepository/LinuxDrivers2024Q1/NILinux2024Q1DeviceDrivers.zip`を実行してLinuxデバイスドライバリポジトリ登録パッケージをダウンロード
+- `sudo apt -y install unzip` を実行
 - `unzip NILinux2024Q1DeviceDrivers.zip`を実行して解凍
 - `sudo apt install /home/researcher/NILinux2024Q1DeviceDrivers/ni-ubuntu2204-drivers-2024Q1.deb`を実行してリポジトリ登録パッケージをインストール
   ※ filename.debは任意のパッケージを使用
@@ -121,7 +122,7 @@ sudo apt -y install netcat &&\
 sudo apt -y install tcpdump &&\
 sudo apt -y install ufw &&\
 sudo apt -y install openssh-server &&\
-sudo apt -y install nano # vim
+sudo apt -y install nano
 ```
 
 - `sudo nano /etc/netplan/00-installer-config.yaml`でUbuntuのネットワーク設定を行う（viでも可）
@@ -243,6 +244,106 @@ PermitEmptyPasswords no
 ```
 
 - 完了したら保存して、`sudo systemctl restart sshd`を実行してsshdを再起動させて設定を反映させる
+
+### Dockerを使用したコンテナ間通信
+
+ここでは、Dockerでコンテナを２つデプロイしてサーバ間通信の検証環境を構築します。  
+先に断っておきますが、Dockerのネットワークは独特なクセがあるので私はあまりオススメしません。
+チャレンジしてみたい人は実際にコンテナを作成して通信が行われるか検証してみましょう💪
+
+- `docker network create <Docker Network Name>`を実行して任意のDockerネットワークを作成
+- `docker network inspect <Docker Network Name>`を実行して詳細を確認
+
+```bash
+$ docker network inspect <Docker Network Name>
+[
+    {
+        "Name": "<Docker Network Name>",
+        "Id": "abcdefg",
+        "Created": "XXXX-XX-XXTXX:XX:XX.XXXXXXXXX",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "XXX.XXX.XXX.XXX/16",
+                    "Gateway": "XXX.XXX.XXX.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {},
+        "Options": {},
+        "Labels": {}
+    }
+]
+```
+
+- `Dockerfile`から`Build image`を実行してイメージを作成
+
+```bash
+What's Next?
+  View a summary of image vulnerabilities and recommendations → docker scout quickview
+ *  ターミナルはタスクで再利用されます、閉じるには任意のキーを押してください。 
+```
+
+- `docker-compose.yaml`から`Compose Up`を実行してコンテナをデプロイ
+
+```bash
+[+] Running 2/0
+ ✔ Container pxi      Running                                                                                                                                                            0.0s 
+ ✔ Container desktop  Running                                                                                                                                                            0.0s 
+ *  ターミナルはタスクで再利用されます、閉じるには任意のキーを押してください。
+```
+
+- 
+- `docker ps`または`docker container ls`を実行して通信に必要な情報を取得します
+
+```bash
+$ docker ps
+CONTAINER ID   IMAGE        COMMAND       CREATED         STATUS         PORTS     NAMES
+c7c2d86e93e7   tcp:latest   "/bin/bash"   5 seconds ago   Up 4 seconds             desktop
+8a488c97c79c   tcp:latest   "/bin/bash"   5 seconds ago   Up 4 seconds             pxi
+```
+
+- `docker inspect ${Container名}`を実行するとデプロイしたコンテナの詳細情報を確認できる
+- VSCodeにDockerの拡張機能から、実行中の2つコンテナをそれぞれ選択して`Attach Shell`をクリック
+
+```bash
+root@desktop:~# 
+# こんな感じのターミナルが起動する
+```
+
+```bash
+root@pxi:~# 
+# こんな感じのターミナルが起動する
+```
+
+- `nc`コマンドを使用して、相互通信が可能か確認
+
+```bash
+# クライアント側
+root@desktop:~# nc -t XXX.XXX.XXX.a 8080
+Hello!
+```
+
+```bash
+# サーバ側
+root@pxi:~# nc -l -p 8080
+Hello!
+```
+
+これでTCP通信がコンテナ間でできるようになりました🙌
+成し遂げたぜ！
 
 ---
 

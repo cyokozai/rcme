@@ -1,8 +1,7 @@
 #!/bin/sh
 set -e
 
-read "password: " password
-echo "$password" | sudo -S apt -y update && sudo -S apt -y upgrade && sudo -S apt dist-upgrade
+sudo -S apt -y update && sudo -S apt -y upgrade && sudo -S apt dist-upgrade
 
 cd /home
 curl 
@@ -12,4 +11,3 @@ rm -f *.deb
 
 read -n1 -p "Press any key to reboot now..."
 echo "$password" | sudo -S reboot
-
