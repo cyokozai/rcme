@@ -1,5 +1,5 @@
 ###################### BUILDER ######################
-FROM python:3.9 AS builder
+FROM python:3.10 AS builder
 
 WORKDIR /root
 
@@ -14,20 +14,14 @@ RUN python -m pip install --upgrade pip &&\
     # echo "backend : Agg" >> matplotlibrc
 
 ###################### PRODUCTION ######################
-FROM ubuntu:latest AS production
+FROM builder AS production
 
 USER root
 
 WORKDIR /root
 
-COPY --from=builder /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages/
+# COPY --from=builder /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.10/site-packages/
+COPY *.sh /root/
 COPY *.py /root/
 
-RUN apt -y update &&\
-    apt -y upgrade &&\
-    apt -y install inetutils-ping &&\
-    apt -y install tcpdump &&\
-    apt -y install iproute2 &&\
-    apt -y install netcat
-
-# CMD ["python", "hello.py"]
+# CMD ["bash", "installer.sh"]
