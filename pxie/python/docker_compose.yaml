@@ -1,0 +1,15 @@
+services:
+  python:
+    container_name: python3.10
+    image: python3.10:latest
+    tty: true
+    build: .
+    working_dir: /home/project
+    volumes:
+      - ./workdir:/home/project
+    networks:
+      - default
+
+networks:
+  default:
+    driver: bridge

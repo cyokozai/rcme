@@ -18,15 +18,13 @@ ENV DISPLAY host.docker.internal:0.0
 #~~~~~~~~~~~~~~~~~~~~~~ EDIT ~~~~~~~~~~~~~~~~~~~~~~~#
 
 COPY requirements.txt /root/
+COPY rye_installer.sh /root/
 COPY *.py /root/
 
 RUN apt -y update && apt -y upgrade &&\
     apt -y install tzdata \
     locales \
     curl \
-    inetutils-ping \
-    net-tools \
-    iproute2 \
     language-pack-ja-base language-pack-ja locales \
     python3.10 \
     python3-pip &&\
@@ -35,6 +33,9 @@ RUN apt -y update && apt -y upgrade &&\
     echo "alias python=python3.10" >> ~/.bashrc &&\
     echo "alias pip=pip3" >> ~/.bashrc &&\
     source ~/.bashrc &&\
+    mkdir -p ~/.local/share/bash-completion/completions &&\
+    cd home &&\
+    mkdir project &&\
     locale-gen ja_JP.UTF-8
 
 #~~~~~~~~~~~~~~~~~~~~~~ EDIT ~~~~~~~~~~~~~~~~~~~~~~~#
