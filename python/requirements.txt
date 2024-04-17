@@ -1,5 +1,6 @@
 pydantic
+pypi
 websockets
 fastapi
 asyncio
-uvicorn[standard]
+nidaqmx

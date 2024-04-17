@@ -4,9 +4,9 @@ services:
     image: python3.10:latest
     tty: true
     build: .
-    working_dir: /home/project
+    working_dir: /root/project
     volumes:
-      - ./workdir:/home/project
+      - ./workdir:/root/project
     networks:
       - default
 

@@ -17,8 +17,8 @@ ENV DISPLAY host.docker.internal:0.0
 
 #~~~~~~~~~~~~~~~~~~~~~~ EDIT ~~~~~~~~~~~~~~~~~~~~~~~#
 
-COPY requirements.txt /root/
-COPY *.py /root/
+COPY ./requirements.txt /root/
+COPY ./*.py /root/
 
 RUN apt -y update && apt -y upgrade &&\
     apt -y install tzdata \
