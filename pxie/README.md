@@ -78,7 +78,7 @@ PXIシステムの計測器全般を指す。用途に応じて使い分ける�
 - `curl -O https://download.ni.com/support/softlib/MasterRepository/LinuxDrivers2024Q1/NILinux2024Q1DeviceDrivers.zip`を実行してLinuxデバイスドライバリポジトリ登録パッケージをダウンロード
 - `sudo apt -y install unzip` を実行
 - `unzip NILinux2024Q1DeviceDrivers.zip`を実行して解凍
-- `sudo apt install /home/researcher/NILinux2024Q1DeviceDrivers/ni-ubuntu2204-drivers-2024Q1.deb`を実行してリポジトリ登録パッケージをインストール
+- `sudo apt install ~/NILinux2024Q1DeviceDrivers/ni-ubuntu2204-drivers-2024Q1.deb`を実行してリポジトリ登録パッケージをインストール
   ※ filename.debは任意のパッケージを使用
   ※ なぜか絶対パスじゃないと動かなかった、なんで？
 - `sudo apt -y install filename`で使用するNIドライバをインストール
@@ -126,7 +126,7 @@ sudo apt -y install nano
 ```
 
 - `sudo nano /etc/netplan/00-installer-config.yaml`でUbuntuのネットワーク設定を行う（viでも可）
-- 以下の設定を行う（$X, Y \in \mathbb{N} \ | \ 1 < X < 256, 1 < Y < 256$）
+- 以下の設定を行う $ ( X, Y \in \mathbb{N} \ | \ 1 < X < 256, 1 < Y < 256 ) $
   
 ```yaml
 network:
@@ -214,7 +214,7 @@ Host PXISystem
 
 ## WebSocketによる同期処理
 
-[Dockerを使用したコンテナ間通信]
+詳細は[Dockerを使用したコンテナ間通信](#dockerを使用したコンテナ間通信)で実装している
 
 ### WebSocketでサーバ・クライアント間のやりとりを自動化させる
 
