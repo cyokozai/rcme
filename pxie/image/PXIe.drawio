@@ -1,0 +1,215 @@
+<mxfile host="65bd71144e">
+    <diagram name="ページ1" id="1OgIjAROzcmodnMJkckw">
+        <mxGraphModel dx="920" dy="488" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="15" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;dashed=1;" vertex="1" parent="1">
+                    <mxGeometry x="180" y="640" width="420" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="" style="verticalLabelPosition=bottom;sketch=0;aspect=fixed;html=1;verticalAlign=top;strokeColor=none;align=center;outlineConnect=0;shape=mxgraph.citrix.desktop;" parent="1" vertex="1">
+                    <mxGeometry x="210.81" y="680" width="108.99" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" parent="1" vertex="1">
+                    <mxGeometry x="480.00000000000006" y="680" width="94.67" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="" style="curved=0;rounded=0;fixDash=1;endArrow=none;strokeWidth=1;fillColor=#ffffff;edgeStyle=orthogonalEdgeStyle;html=1;endFill=0;entryX=0;entryY=0.498;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="2" target="3" edge="1">
+                    <mxGeometry width="60" height="40" relative="1" as="geometry">
+                        <mxPoint x="320" y="740" as="sourcePoint"/>
+                        <mxPoint x="469.82" y="740" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="440" y="740"/>
+                            <mxPoint x="440" y="740"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5" value="192.168.200.201" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="210.31" y="800" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="192.168.200.200" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="472.3300000000001" y="800" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="Lan cable" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="740" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="192.168.200.0" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="190" y="640" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;position2=0;size=10;position=0.04;base=10;" vertex="1" parent="1">
+                    <mxGeometry x="625" y="480" width="120" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="" style="verticalLabelPosition=bottom;sketch=0;aspect=fixed;html=1;verticalAlign=top;strokeColor=none;align=center;outlineConnect=0;shape=mxgraph.citrix.desktop;" vertex="1" parent="1">
+                    <mxGeometry x="110" y="80" width="90.82" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="80" width="80" height="101.41" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="" style="shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#EF8F21;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.veeam.linux;" vertex="1" parent="1">
+                    <mxGeometry x="630" y="100" width="44.8" height="44.8" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="PXIe-1092" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="610" y="181.41" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="" style="dashed=0;outlineConnect=0;html=1;align=center;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.weblogos.github;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="360" y="92.11" width="78.59" height="78.59" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="220" y="130.89999999999998" as="sourcePoint"/>
+                        <mxPoint x="340" y="130.89999999999998" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="23" value="mainブランチに変更" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="220" y="100" width="130" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="460" y="144.79999999999995" as="sourcePoint"/>
+                        <mxPoint x="580" y="144.79999999999995" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="25" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="580" y="121.89999999999998" as="sourcePoint"/>
+                        <mxPoint x="460" y="121.89999999999998" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="26" value="Pull Request" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="480" y="92.11" width="90" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="mainブランチの&lt;br&gt;プログラムファイル" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="460" y="144.8" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="deffコマンドで差分をとる" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="450" y="220" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="" style="sketch=0;outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.source_code;fillColor=#00FF00;strokeColor=#B20000;fontColor=#ffffff;gradientColor=none;shadow=1;textShadow=1;" vertex="1" parent="1">
+                    <mxGeometry x="616.5" y="260" width="57" height="78" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#232F3D;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.source_code;shadow=1;textShadow=1;" vertex="1" parent="1">
+                    <mxGeometry x="606.5" y="270" width="57" height="78" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="690" y="300" as="sourcePoint"/>
+                        <mxPoint x="790" y="300" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="32" value="差分が発生したら&lt;br&gt;実行" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="680" y="250" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="" style="curved=1;endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="630" y="209.9999999999999" as="sourcePoint"/>
+                        <mxPoint x="630" y="249.9999999999999" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="610" y="220"/>
+                            <mxPoint x="610" y="240"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="34" value="" style="curved=1;endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="650" y="249.9999999999999" as="sourcePoint"/>
+                        <mxPoint x="650" y="209.9999999999999" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="670" y="240"/>
+                            <mxPoint x="670" y="220"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="35" value="差分がなければ&lt;br&gt;プルリク" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="673.5" y="201.41" width="110" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="サーバ案その１" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="18" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="299.29999999999995" y="189.9999999999999" as="sourcePoint"/>
+                        <mxPoint x="499.29999999999995" y="69.99999999999989" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="38" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="499.29999999999995" y="189.9999999999999" as="sourcePoint"/>
+                        <mxPoint x="299.29999999999995" y="69.99999999999989" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="39" value="サーバ案その２" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="410" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="" style="verticalLabelPosition=bottom;sketch=0;aspect=fixed;html=1;verticalAlign=top;strokeColor=none;align=center;outlineConnect=0;shape=mxgraph.citrix.desktop;" vertex="1" parent="1">
+                    <mxGeometry x="200.82" y="480" width="108.99" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" vertex="1" parent="1">
+                    <mxGeometry x="520.82" y="480" width="94.67" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="" style="shape=filledEdge;curved=0;rounded=0;fixDash=1;endArrow=none;strokeWidth=10;fillColor=#ffffff;edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1">
+                    <mxGeometry width="60" height="40" relative="1" as="geometry">
+                        <mxPoint x="310.8199999999997" y="539.5" as="sourcePoint"/>
+                        <mxPoint x="520.8200000000002" y="540" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="470" y="540"/>
+                            <mxPoint x="470" y="540"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="43" value="192.168.200.201" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="200.31" y="600" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="192.168.200.200" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="513.1600000000001" y="600" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="Lan 2.5Gb ~ 10Gb" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="350.82" y="555" width="120" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="同期式" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="440" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="リクエストが来たら&lt;div&gt;計算を開始するよ&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="620" y="480" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="590" y="525" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="デーモン&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="48">
+                    <mxGeometry y="3.75" width="30" height="56.25" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="48">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="7.5" y="7.5" as="sourcePoint"/>
+                        <mxPoint x="11.25" y="3.75" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="7.5"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="51" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="48">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="18.75" y="3.75" as="sourcePoint"/>
+                        <mxPoint x="22.5" y="7.5" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="22.5"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="52" value="Pythonで機械学習&lt;br&gt;＆&lt;br&gt;測定結果のリクエストをPXIに送信" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="0.31" y="510" width="210" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="1. 学習" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="225.32" y="440" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="2.リクエスト" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="365.82" y="495" width="90" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="3. 測定" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="538.16" y="440" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="4. リプライ" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="370.82" y="465" width="80" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

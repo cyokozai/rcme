@@ -1,0 +1,4 @@
+# git rm -r --cached .
+.DS_Store
+*.pdf
+./*/workdir*/
