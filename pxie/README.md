@@ -106,9 +106,9 @@ PXIシステムの計測器全般を指す。用途に応じて使い分ける�
 
 ここからの作業は一般的なUbuntu Serverを構築する時と変わらない[^1]のでサクサク進めよう！
 
-![fig1](network.svg "Local Network")
+![fig1](./image/network.svg "Local Network")
 
-[Fig 1]: network.svg
+[Fig 1]: ./image/network.svg
 
 ### まずはじめにnetplanあり
 
