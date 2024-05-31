@@ -1,6 +1,0 @@
-pydantic
-pypi
-websockets
-fastapi
-asyncio
-nidaqmx
