@@ -1,0 +1,6 @@
+pydantic
+websockets
+fastapi
+asyncio
+uvicorn[standard]
+nidaqmx
